@@ -29,14 +29,14 @@ zokou({
           
        let infoMess = {
           image: {url : videos[0]. thumbnail},
-         caption : `\n*Kibore md playlist*\n\n*Audio name :* _${videos[0].title}_
+         caption : `\n*Seba md playlist*\n\n*Audio name :* _${videos[0].title}_
 
 *Time :* _${videos[0].timestamp}_
 
 *Url :* _${videos[0].url}_
 
 
-_*Generated From Rahman database*_`
+_*Generated From Sebastian database*_`
        }
 
       

@@ -73,8 +73,8 @@ else {
     } else {
         if(!superUser) { repondre("𝐊𝐈𝐁𝐎𝐑𝐄") ; return};
 
-      await   repondre("*https://whatsapp.com/channel/0029VatokI45EjxufALmY32X");
-         repondre("𝗛𝗲𝗹𝗹𝗼 𝗜 𝗮𝗺 𝗞𝗶𝗯𝗼𝗿𝗲 𝗠𝗱,𝗔𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗙𝗼𝗿 𝘂𝘀𝗲..")
+      await   repondre("*https://whatsapp.com/channel/0029Vb7LxhRGE56l9woRjd2g");
+         repondre("𝗛𝗲𝗹𝗹𝗼 𝗜 𝗮𝗺 𝐒𝐞𝐛𝐚 𝗠𝗱,𝗔𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗙𝗼𝗿 𝘂𝘀𝗲..")
      }
  } else {
 
@@ -88,7 +88,7 @@ else {
     
 await addOrUpdateDataInAlive(texte , tlien)
 
-repondre(' https://whatsapp.com/channel/0029VatokI45EjxufALmY32X. ')
+repondre(' https://whatsapp.com/channel/0029Vb7LxhRGE56l9woRjd2g. ')
 
 }
     });

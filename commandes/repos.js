@@ -41,19 +41,19 @@ const date = moment().format('DD/MM/YYYY');
 │❒⁠⁠⁠⁠│▸ *GROUP* 
 │❒⁠⁠⁠⁠│▸ *REPO*
 │❒⁠⁠⁠⁠╰──────────────
-│❒⁠⁠⁠⁠│▸ *CHANNEL* :  https://whatsapp.com/channel/0029Vb3eLRU3QxS5CZHI131x
+│❒⁠⁠⁠⁠│▸ *CHANNEL* :  https://whatsapp.com/channel/0029Vb7LxhRGE56l9woRjd2g
 
 │❒⁠⁠⁠⁠│▸ *GROUP* : https://chat.whatsapp.com/DTnrZzULVtP5r0E9rhoFOj
 
-│❒⁠⁠⁠⁠│▸ *REPO* : https://github.com/kibore-og/KBR
+│❒⁠⁠⁠⁠│▸ *REPO* : https://github.com/bravesebastian458-dotcom/Sebastian-Md
 
-│❒⁠⁠⁠⁠│▸ *CHANNEL2* https://whatsapp.com/channel/0029VatokI45EjxufALmY32X
+│❒⁠⁠⁠⁠│▸ *CHANNEL2* https://whatsapp.com/channel/0029Vb7LxhRGE56l9woRjd2g
 │❒⁠⁠⁠⁠╰──────────────
 ╰──────────────────\n
   `;
     
 let menuMsg = `
-     *MADE EASY BY RAHMANI*
+     *MADE EASY BY SEBASTIAN*
 
 ❒────────────────────❒`;
 

@@ -60,7 +60,7 @@ zokou({ nomCom: "dev", categorie: "General", reaction: "💞" }, async (dest, zk
       // Ajoute d'autres développeurs ici avec leur nom et numéro
     ];
 
-    let message = "༆🖐️ Mambo! 𝘸𝘦𝘭𝘤𝘰𝘮𝘦 𝘵𝘰 𝙺𝙸𝙱𝙾𝚁𝙴 𝙼𝙳 𝘵𝘦𝘢𝘮 𝘤𝘳𝘦𝘢𝘵𝘰𝘳 𝘪𝘧 𝘺𝘰𝘶 𝘩𝘢𝘷𝘦 𝘢𝘯𝘺 𝘲𝘶𝘦𝘴𝘵𝘪𝘰𝘯 𝘢𝘴𝘬 𝘶𝘴༆ To :\n\n";
+    let message = "༆🖐️ Mambo! 𝘸𝘦𝘭𝘤𝘰𝘮𝘦 𝘵𝘰 sᴇʙᴀ 𝙼𝙳 𝘵𝘦𝘢𝘮 𝘤𝘳𝘦𝘢𝘵𝘰𝘳 𝘪𝘧 𝘺𝘰𝘶 𝘩𝘢𝘷𝘦 𝘢𝘯𝘺 𝘲𝘶𝘦𝘴𝘵𝘪𝘰𝘯 𝘢𝘴𝘬 𝘶𝘴༆ To :\n\n";
     for (const dev of devs) {
       message += `----------------\n• ${dev.nom} : https://wa.me/${dev.numero}\n`;
     }
@@ -95,7 +95,7 @@ zokou({ nomCom: "support", categorie: "General" }, async (dest, zk, commandeOpti
   const { ms, repondre, auteurMessage, } = commandeOptions; 
  
   repondre("look on pm sir ")
-  await zsendMessage(auteurMessage,{text :`https://whatsapp.com/channel/0029Vb3eLRU3QxS5CZHI131x`},{quoted :ms})
+  await zsendMessage(auteurMessage,{text :`https://whatsapp.com/channel/0029Vb7LxhRGE56l9woRjd2g`},{quoted :ms})
 
 })
 
@@ -103,8 +103,8 @@ zokou({ nomCom: "developer", categorie: "General", reaction: "💀" }, async (de
     const { ms, mybotpic } = commandeOptions;
 
     const devs = [
-      { nom: "Rahman 𝙼𝙳", numero: "255693629079" },
-      { nom: "Rahman 𝙼𝚍", numero: "255693629079" },
+      { nom: "sebastian 𝙼𝙳", numero: "255612619717" },
+      { nom: "Sebastian 𝙼𝚍", numero: "255612619717" },
       // Ajoute d'autres développeurs ici avec leur nom et numéro
     ];
 

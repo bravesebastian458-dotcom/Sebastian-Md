@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const { zokou } = require("../framework/zokou");
 zokou({ nomCom: "ping", reaction: "☀", nomFichier: __filename }, async (dest, zk, commandeOptions) => {
     console.log("Commande saisie !!!s");
-    let z = '𝗞𝗶𝗯𝗼𝗿𝗲 𝗿𝗲𝘀𝗽𝗼𝗻𝘀𝗲 𝘀𝗽𝗲𝗲𝗱 𝗶𝘀';
+    let z = '𝐒𝐞𝐛𝐚 𝗿𝗲𝘀𝗽𝗼𝗻𝘀𝗲 𝘀𝗽𝗲𝗲𝗱 𝗶𝘀';
     let d = '𝟖𝟎.𝟗𝟏𝐌/𝐬';
     let varmess = z + d;
-    var img = 'https://files.catbox.moe/t9jjm9.jpg';
+    var img = 'https://files.catbox.moe/2yarwr.png';
     await zk.sendMessage(dest, { image: { url: img }, caption: varmess });
     //console.log("montest")
 });
