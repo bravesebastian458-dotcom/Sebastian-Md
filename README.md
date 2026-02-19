@@ -4,7 +4,7 @@
 
 </p>
 <p align="center"> 
-  <a href="https://whatsapp.com/channel/0029Vb3eLRU3QxS5CZHI131x">
+  <a href="https://whatsapp.com/channel/0029Vb7LxhRGE56l9woRjd2g">
     <img alt=Support height="390" src="https://files.catbox.moe/2yarwr.png"> 
     </p>
  
@@ -62,7 +62,7 @@ For any issues or to stay updated, use the options below:
 
 ✅ Follow My WhatsApp Channel 
 
-[![Follow My WhatsApp Channel](https://img.shields.io/static/v1?label=Follow%20My%20WhatsApp%20Channel&message=follow&color=25D366&style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029Vb3eLRU3QxS5CZHI131x)  
+[![Follow My WhatsApp Channel](https://img.shields.io/static/v1?label=Follow%20My%20WhatsApp%20Channel&message=follow&color=25D366&style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029Vb7LxhRGE56l9woRjd2g)  
 
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 
