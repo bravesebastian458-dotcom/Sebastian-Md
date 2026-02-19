@@ -1,9 +1,9 @@
 {
-  "name":"KIBORE-MD",
-  "description":"Best whatsapp bot created by Rahmany",
+  "name":"SEBA MD",
+  "description":"Best whatsapp bot created by Sebastian",
   "keywords":["bot","node","baileys","whatsapp"],
-  "logo":"https://files.catbox.moe/71bknp.jpg",
-  "repository":"https://github.com/Qartde/RAHMANI-XMD",
+  "logo":"https://files.catbox.moe/2yarwr.png",
+  "repository":"https://github.com/bravesebastian458-dotcom/Sebastian-Md",
   "succes_url":"/",
   "stack":"container",
   "env":{
@@ -77,7 +77,7 @@
        "BOT_NAME" : 
     {
     "description":"put A name for your bot",
-    "value":"RAHMAN-MD",
+    "value":"SEBA-MD",
     "required":false
 
     },
@@ -117,14 +117,14 @@
     
     "desc": "Your Name",
     "required": false,
-    "value": "Rahmany"
+    "value": "Sebastian"
   },
     "NUMERO_OWNER":
   {
     
     "desc": "Your number , dont put '+' and put you area code(exemple of togo '228')",
     "required":false,
-    "value": "255760164530"
+    "value": "255612619717"
   },
     "WARN_COUNT":
   {

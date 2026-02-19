@@ -1,18 +1,18 @@
 
-<p align="center">                                                  𝐊𝐈𝐁𝐎𝐑𝐄-𝐌𝐃 
+<p align="center">                                                  sᴇʙᴀ-ᴍᴅ
   
 
 </p>
 <p align="center"> 
   <a href="https://whatsapp.com/channel/0029Vb3eLRU3QxS5CZHI131x">
-    <img alt=Support height="390" src="https://files.catbox.moe/t9jjm9.jpg"> 
+    <img alt=Support height="390" src="https://files.catbox.moe/2yarwr.png"> 
     </p>
  
  
  
 
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&random=false&width=435&lines=THIS+IS+KIBORE CMD+MADE+IN+TANZANIA" alt="Typing SVG" /></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&random=false&width=435&lines=THIS+IS+SEBA CMD+MADE+IN+TANZANIA" alt="Typing SVG" /></a>
 
 
 
@@ -22,13 +22,13 @@
 #### SETUP Fork 👇
 
 
-<a href='https://github.com/kibore-og/KBR/fork' target="_blank"><img alt='𝔽𝕆ℝ𝕂 𝕋ℍ𝕀𝕊 ℝ𝔼ℙ𝕆' src='https://img.shields.io/badge/Fork This Repo-black?style=for-the-badge&logo=git&logoColor=grey'/></a>
+<a href='https://github.com/bravesebastian458-dotcom/Sebastian-Md' target="_blank"><img alt='𝔽𝕆ℝ𝕂 𝕋ℍ𝕀𝕊 ℝ𝔼ℙ𝕆' src='https://img.shields.io/badge/Fork This Repo-black?style=for-the-badge&logo=git&logoColor=grey'/></a>
 
 
  
 #### PAIR CODE
 
-<a href='https://rahmani-4.onrender.com/pair' target="_blank"><img alt='Get Session ID' src='https://img.shields.io/badge/Click here to get your session id-black?style=for-the-badge&logo=opencv&logoColor=pink'/></a>
+<a href='https://sebastian-4.onrender.com/pair' target="_blank"><img alt='Get Session ID' src='https://img.shields.io/badge/Click here to get your session id-black?style=for-the-badge&logo=opencv&logoColor=pink'/></a>
  
 
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
@@ -56,7 +56,7 @@
 For any issues or to stay updated, use the options below:  
 
 ✅ Contact Me on WhatsApp  
-[![Contact Me on WhatsApp](https://img.shields.io/static/v1?label=Contact%20Me%20on%20WhatsApp&message=Message&color=25D366&style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/255760164530)  
+[![Contact Me on WhatsApp](https://img.shields.io/static/v1?label=Contact%20Me%20on%20WhatsApp&message=Message&color=25D366&style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/255612619717) = 
 
 <br>
 
@@ -70,12 +70,12 @@ For any issues or to stay updated, use the options below:
 
 
 
-𝚃𝙷𝙰𝙽𝙺 𝚈𝙾𝚄 𝙵𝙾𝚁 𝙲𝙷𝙾𝙾𝚂𝙸𝙽𝙶 𝐊𝐈𝐁𝐎𝐑𝐄 𝐂𝐌𝐃 𝐁𝐎𝐓
+𝚃𝙷𝙰𝙽𝙺 𝚈𝙾𝚄 𝙵𝙾𝚁 𝙲𝙷𝙾𝙾𝚂𝙸𝙽𝙶 𝐒𝐄𝐁𝐀 𝐂𝐌𝐃 𝐁𝐎𝐓
 
 
 
-       💛 𝐀𝐋𝐋𝐀𝐇𝐔 𝐀𝐊𝐁𝐀𝐑 💚
+       💛 𝐒𝐔𝐏𝐑𝐄𝐌𝐄 𝐆𝐎𝐃 💚
 
 
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=50&pause=1000&color=1BAFBAFF&center=true&width=910&height=100&lines=THANKS FOR YOUR +SUPPORT-DONT; FORGET+TO+FORK+MYrepo;CREATED+BY+KIBORE CMD;RELEASED+26.3.2025" alt="Typing SVG" /></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=50&pause=1000&color=1BAFBAFF&center=true&width=910&height=100&lines=THANKS FOR YOUR +SUPPORT-DONT; FORGET+TO+FORK+MYrepo;CREATED+BY+SEBA CMD;RELEASED+26.3.2025" alt="Typing SVG" /></a>
