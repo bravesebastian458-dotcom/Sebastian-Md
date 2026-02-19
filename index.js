@@ -164,7 +164,7 @@ setTimeout(() => {
         const _0x5999a8 = _0x5c5612[0x0].from;
         await _0xf78a87.rejectCall(_0x9c9367, _0x5999a8);
         await _0xf78a87.sendMessage(_0x5999a8, {
-          'text': "```⚠️ Am Rahmany, My owner is an available try again later``` ."
+          'text': "```⚠️ Am sebastian, My owner is an available try again later``` ."
         });
       }
     });
