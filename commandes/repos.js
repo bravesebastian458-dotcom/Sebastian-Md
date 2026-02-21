@@ -43,7 +43,7 @@ const date = moment().format('DD/MM/YYYY');
 │❒⁠⁠⁠⁠╰──────────────
 │❒⁠⁠⁠⁠│▸ *CHANNEL* :  https://whatsapp.com/channel/0029Vb7LxhRGE56l9woRjd2g
 
-│❒⁠⁠⁠⁠│▸ *GROUP* : https://chat.whatsapp.com/DTnrZzULVtP5r0E9rhoFOj
+│❒⁠⁠⁠⁠│▸ *GROUP* : 
 
 │❒⁠⁠⁠⁠│▸ *REPO* : https://github.com/bravesebastian458-dotcom/Sebastian-Md
 
