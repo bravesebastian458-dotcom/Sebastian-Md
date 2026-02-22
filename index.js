@@ -478,34 +478,7 @@ setTimeout(() => {
       } catch (_0x41a38a) {}
       try {
         const _0x77b943 = await verifierEtatJid(_0x56ba16);
-        if (_0x3c4e15 && _0x77b943) {
-
-    // Regex to detect any links
-    const linkRegex = /(?:https?:\/\/|www\.|chat\.whatsapp\.com|t\.me\/|wa\.me\/|facebook\.com|instagram\.com|youtube\.com|bit\.ly|tinyurl\.com)[^\s]+/gi;
-
-    if (linkRegex.test(_0x1eacba)) {
-
-        // Owners or admins are ignored
-        if (_0x5a78ec || _0x4f0765) return;
-
-        // Send warning message to user
-        await _0xf78a87.sendMessage(_0x56ba16, {
-            text: `🚫 Links are not allowed here @${_0x19b3a0.split('@')[0]}`,
-            mentions: [_0x19b3a0]
-        });
-
-        // Delete the message containing the link
-        await _0xf78a87.sendMessage(_0x56ba16, {
-            delete: {
-                remoteJid: _0x56ba16,
-                fromMe: false,
-                id: _0x4c77a4.key.id,
-                participant: _0x19b3a0
-            }
-        }).catch(err => console.log("Error deleting message:", err));
-
-    }
-} {
+        if (_0x1eacba.includes("https://") && _0x3c4e15 && _0x77b943) {
           console.log("lien detecté");
           var _0x23b27c = _0x3c4e15 ? _0x228f82.includes(_0x4f6687) : false;
           if (_0x5a78ec || _0x4f0765 || !_0x23b27c) {
@@ -777,7 +750,7 @@ setTimeout(() => {
       try {
         const _0x442c6f = await _0xf78a87.groupMetadata(_0x2d4ff0.id);
         if (_0x2d4ff0.action == "add" && (await _0x3917c8(_0x2d4ff0.id, 'welcome')) == 'on') {
-          let _0x4cf3d4 = "*SEBA MD WELCOME MESSAGE*";
+          let _0x4cf3d4 = "*RAHMAN MD WELCOME MESSAGE*";
           let _0x80123d = _0x2d4ff0.participants;
           for (let _0x466772 of _0x80123d) {
             _0x4cf3d4 += " \n❒ *Hey* 🖐️ @" + _0x466772.split('@')[0x0] + " WELCOME TO OUR GROUP. \n\n";
@@ -898,10 +871,10 @@ setTimeout(() => {
         connection: _0x34734f
       } = _0x27d47d;
       if (_0x34734f === "connecting") {
-        console.log("ℹ️ Sebastian is connecting...");
+        console.log("ℹ️ Rahmany is connecting...");
       } else {
         if (_0x34734f === "open") {
-          console.log("✅ Sebastian Connected to WhatsApp! ☺️");
+          console.log("✅ Rahmany Connected to WhatsApp! ☺️");
           console.log('--');
           0x0;
           await baileys_1.delay(0xc8);
@@ -909,8 +882,8 @@ setTimeout(() => {
           0x0;
           await baileys_1.delay(0x12c);
           console.log("------------------/-----");
-          console.log("Sebastian Md is Online 🕸\n\n");
-          console.log("Loading Sebastian Commands ...\n");
+          console.log("Rahmany Md is Online 🕸\n\n");
+          console.log("Loading Rahmany Commands ...\n");
           fs.readdirSync(__dirname + "/commandes").forEach(_0x38cb02 => {
             if (path.extname(_0x38cb02).toLowerCase() == '.js') {
               try {
