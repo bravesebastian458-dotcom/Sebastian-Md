@@ -1,21 +1,26 @@
-FROM node:lts
+# Tumia Node 20 LTS mahususi
+FROM node:20-alpine
 
-RUN apt-get update && \
-  apt-get install -y \
-  ffmpeg \
-  imagemagick \
-  webp && \
-  apt-get upgrade -y && \
-  npm i pm2 -g && \
-  rm -rf /var/lib/apt/lists/*
+# Install system dependencies kwa alpine
+RUN apk update && \
+    apk add --no-cache \
+    ffmpeg \
+    imagemagick \
+    libwebp-tools \
+    && npm i pm2 -g
 
 WORKDIR /app
 
-COPY package.json .
-RUN npm install --legacy-peer-deps
+# Copy package files
+COPY package*.json ./
 
+# Install dependencies bila legacy-peer-deps
+RUN npm install
+
+# Copy source code
 COPY . .
 
 EXPOSE 5000
 
-CMD ["node", "index.js"]
+# Suppress deprecation warnings
+CMD ["node", "--no-deprecation", "index.js"]
