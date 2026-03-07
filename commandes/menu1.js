@@ -1,82 +1,448 @@
-const util = require('util');
-const fs = require('fs-extra');
-const { zokou } = require(__dirname + "/../framework/zokou");
-const { format } = require(__dirname + "/../framework/mesfonctions");
-const os = require("os");
-const moment = require("moment-timezone");
-const s = require(__dirname + "/../set");
-const more = String.fromCharCode(8206)
-const readmore = more.repeat(4001)
-zokou({ nomCom: "menu", categorie: "General" }, async (dest, zk, commandeOptions) => {
-    let { ms, repondre ,prefixe,nomAuteurMessage,mybotpic} = commandeOptions;
-    let { cm } = require(__dirname + "/../framework//zokou");
-    var coms = {};
-    var mode = "public";
-    if ((s.MODE).toLocaleLowerCase() != "yes") {
-        mode = "private";
+const { zokou } = require("../framework/zokou");
+const conf = require("../set");
+const fs = require("fs-extra");
 
-    }
-    cm.map(async (com, index) => {
-        if (!coms[com.categorie])
-            coms[com.categorie] = [];
-        coms[com.categorie].push(com.nomCom);
-    });
-    moment.tz.setDefault('Etc/GMT');
-// Créer une date et une heure en GMT
-const temps = moment().format('HH:mm:ss');
-const date = moment().format('DD/MM/YYYY');
-  let infoMsg =  `
-╭━━〔 *${s.BOT}* 〕━━┈⊷
-┃๏╭───────────
-┃๏│▸ 𝗢𝘄𝗻𝗲𝗿 : ${s.OWNER_NAME}
-┃๏│▸ 𝗣𝗿𝗲𝗳𝗶𝘅 : [ ${s.PREFIXE} ] 
-┃๏│▸ 𝗠𝗼𝗱𝗲 : *${mode}*
-┃๏│▸ 𝗗𝗮𝘁𝗲  : *${date}* 
-┃๏│▸ 𝗥𝗮𝗺 : 𝟴/𝟭𝟯𝟮 𝗚𝗕
-┃๏│▸ 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : 𝗖𝗵𝗿𝗼𝗺𝗲 𝗟𝗶𝗻𝘂𝘅
-┃๏│▸ 𝗖𝗿𝗲𝗮𝘁𝗼𝗿 : 𝒮𝑒𝒷𝒶𝓈𝓉𝒾𝒶𝓃
-┃๏└───────────···▸
-╰──────────────┈⊷\n${readmore}`;
-    let menuMsg = `𝐒𝐄𝐁𝐀 𝐌𝐃 𝓲𝓼 𝓬𝓸𝓷𝓷𝓮𝓬𝓽𝓮𝓭 
+// ==================== MENU NDOGO ====================
+zokou({ 
+  nomCom: "menu", 
+  aliases: ["help2", "cmd2", "commands2"],
+  reaction: "🎯",
+  categorie: "General" 
+}, async (dest, zk, commandeOptions) => {
+  
+  const { repondre, ms, mybotpic, auteurMessage, nomAuteurMessage } = commandeOptions;
+  
+  // Get current time
+  const now = new Date();
+  const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  const date = now.toLocaleDateString('en-US', { 
+    day: 'numeric', 
+    month: 'short', 
+    year: 'numeric' 
+  });
+  
+  // ========== MENU DESIGN ==========
+  const menuText = `
+╭━━━━━━━━━━━━━━━╮
+┃  🎯 *MENU RAPIDE*  🎯
+╰━━━━━━━━━━━━━━━╯
+
+┏━━━━━━━━━━━━━━━━━━━━┓
+┃  ⏰ ${time} ┃ ${date}
+┃  👤 *User:* ${nomAuteurMessage || 'User'}
+┃  🤖 *Bot:* ${conf.BOT_NAME || 'Bot'}
+┗━━━━━━━━━━━━━━━━━━━━┛
+
+╭━─━─━─━─━─━─━─━─━─━╮
+┃  ✦ *COMMANDES RAPIDES* ✦
+┃  
+┃  📱 **GROUP**
+┃  ├─ .tagall - Tag tous
+┃  ├─ .hidetag - Tag caché
+┃  ├─ .link - Lien du groupe
+┃  ├─ .info - Infos groupe
+┃  ├─ .group open/close
+┃  └─ .gname / .gdesc
+┃  
+┃  🛡️ **SECURITÉ**
+┃  ├─ .antilink on/off
+┃  ├─ .antibot on/off
+┃  ├─ .nsfw on/off
+┃  └─ .fkick [code]
+┃  
+┃  👑 **ADMIN**
+┃  ├─ .promote / .demote
+┃  ├─ .remove / .del
+┃  ├─ .gpp (photo)
+┃  └─ .automute / .autounmute
+┃  
+┃  📥 **DOWNLOAD**
+┃  └─ .apk [nom]
+┃  
+╰━─━─━─━─━─━─━─━─━─━╯
+
+╔══════════════════╗
+║  💫 *${conf.BOT_NAME}*  💫
+║  ⚡ Tape .menu pour +
+╚══════════════════╝
+
+> _© ${conf.OWNER_NAME || 'Bot'}_
 `;
-    for (const cat in coms) {
-        menuMsg += `
-╭──「 *${cat}* 」──┈⊷ 
-┃╭──────────
-┌┤ `;
-        for (const cmd of coms[cat]) {
-            menuMsg += `          
-┃│■  ${cmd}`    
-        } 
-        menuMsg +=`
-┌┤
-│╰────────┈⊷  
-╰────────────┈⊷`
+
+  // Try to send with image if available
+  try {
+    const pic = mybotpic();
+    if (pic && pic.match(/\.(jpeg|png|jpg|gif|mp4)$/i)) {
+      
+      if (pic.match(/\.(mp4|gif)$/i)) {
+        await zk.sendMessage(dest, { 
+          video: { url: pic }, 
+          caption: menuText,
+          gifPlayback: true,
+          mentions: [auteurMessage]
+        }, { quoted: ms });
+      } 
+      else {
+        await zk.sendMessage(dest, { 
+          image: { url: pic }, 
+          caption: menuText,
+          mentions: [auteurMessage]
+        }, { quoted: ms });
+      }
+    } 
+    else {
+      await repondre(menuText);
     }
-    menuMsg += `
-> 𝐒𝐄𝐁𝐀 𝐌𝐃\n
+  } catch (e) {
+    await repondre(menuText);
+  }
+});
+
+// ==================== MENU YA AI NDOGO ====================
+zokou({ 
+  nomCom: "aimenu2", 
+  reaction: "🤖",
+  categorie: "AI" 
+}, async (dest, zk, commandeOptions) => {
+  
+  const { repondre, ms, mybotpic } = commandeOptions;
+  
+  const aiMenu = `
+╭━━━━━━━━━━━━━━━╮
+┃  🤖 *MENU AI*  🤖
+╰━━━━━━━━━━━━━━━╯
+
+┏━━━━━━━━━━━━━━━━━━━━┓
+┃  🎨 **GÉNÉRATION**
+┃  ├─ .imagine [prompt]
+┃  ├─ .draw [description]
+┃  └─ .remix (reply)
+┃  
+┃  ⚙️ **CONFIG**
+┃  ├─ .aistatus
+┃  └─ .aimodel [model]
+┃  
+┃  🖼️ **EXEMPLES**
+┃  ├─ .imagine sunset
+┃  └─ .draw cute cat
+┗━━━━━━━━━━━━━━━━━━━━┛
+
+⚡ _Plus de commandes: .menu_
 `;
-   var lien = mybotpic();
-   if (lien.match(/\.(mp4|gif)$/i)) {
-    try {
-        zk.sendMessage(dest, { video: { url: lien }, caption:infoMsg + menuMsg, footer: "Je suis *Beltahmd*, déveloper Beltah Tech" , gifPlayback : true }, { quoted: ms });
+
+  try {
+    const pic = mybotpic();
+    if (pic && pic.match(/\.(jpeg|png|jpg)$/i)) {
+      await zk.sendMessage(dest, { 
+        image: { url: pic }, 
+        caption: aiMenu
+      }, { quoted: ms });
+    } else {
+      await repondre(aiMenu);
     }
-    catch (e) {
-        console.log("🥵🥵 Menu erreur " + e);
-        repondre("🥵🥵 Menu erreur " + e);
+  } catch {
+    await repondre(aiMenu);
+  }
+});
+
+// ==================== MENU YA GROUP NDOGO ====================
+zokou({ 
+  nomCom: "groupmenu", 
+  aliases: ["gmenu", "groupcmd"],
+  reaction: "👥",
+  categorie: "Group" 
+}, async (dest, zk, commandeOptions) => {
+  
+  const { repondre, ms, verifGroupe } = commandeOptions;
+  
+  if (!verifGroupe) {
+    return repondre("❌ Cette commande est pour les groupes uniquement");
+  }
+  
+  const groupMenu = `
+╭━━━━━━━━━━━━━━━╮
+┃  👥 *MENU GROUPE*  👥
+╰━━━━━━━━━━━━━━━╯
+
+┏━━━━━━━━━━━━━━━━━━━━┓
+┃  📢 **COMMUNICATION**
+┃  ├─ .tagall [msg]
+┃  ├─ .hidetag [msg]
+┃  ├─ .link
+┃  └─ .info
+┃  
+┃  👑 **GESTION**
+┃  ├─ .promote (reply)
+┃  ├─ .demote (reply)
+┃  ├─ .remove (reply)
+┃  ├─ .del (reply)
+┃  ├─ .gname [nom]
+┃  ├─ .gdesc [desc]
+┃  └─ .gpp (image)
+┃  
+┃  🔒 **SÉCURITÉ**
+┃  ├─ .antilink on/off
+┃  ├─ .antibot on/off
+┃  ├─ .nsfw on/off
+┃  ├─ .group open/close
+┃  └─ .fkick [code]
+┃  
+┃  ⏰ **AUTOMATION**
+┃  ├─ .automute [time]
+┃  └─ .autounmute [time]
+┗━━━━━━━━━━━━━━━━━━━━┛
+
+📌 *Tape .help [commande] pour details*
+`;
+
+  await repondre(groupMenu);
+});
+
+// ==================== MENU YA DOWNLOAD NDOGO ====================
+zokou({ 
+  nomCom: "downloadmenu", 
+  aliases: ["dlmenu", "apkmenu"],
+  reaction: "📥",
+  categorie: "Download" 
+}, async (dest, zk, commandeOptions) => {
+  
+  const { repondre, ms } = commandeOptions;
+  
+  const dlMenu = `
+╭━━━━━━━━━━━━━━━╮
+┃  📥 *MENU DOWNLOAD*  📥
+╰━━━━━━━━━━━━━━━╯
+
+┏━━━━━━━━━━━━━━━━━━━━┓
+┃  📱 **APPLICATIONS**
+┃  ├─ .apk [nom]
+┃  ├─ .apk whatsapp
+┃  └─ .apk instagram
+┃  
+┃  🎵 **MÉDIAS**
+┃  ├─ .yt [url]
+┃  ├─ .ytmp3 [url]
+┃  ├─ .tiktok [url]
+┃  ├─ .instagram [url]
+┃  └─ .facebook [url]
+┃  
+┃  💡 **EXEMPLES**
+┃  ├─ .apk spotify
+┃  └─ .yt https://youtu.be/...
+┗━━━━━━━━━━━━━━━━━━━━┛
+
+✨ _Plus de commandes: .menu_
+`;
+
+  await repondre(dlMenu);
+});
+
+// ==================== MENU YA ADMIN NDOGO ====================
+zokou({ 
+  nomCom: "adminmenu", 
+  aliases: ["admcmd", "modmenu"],
+  reaction: "👑",
+  categorie: "Admin" 
+}, async (dest, zk, commandeOptions) => {
+  
+  const { repondre, ms, verifAdmin, superUser } = commandeOptions;
+  
+  if (!verifAdmin && !superUser) {
+    return repondre("❌ Cette commande est pour les admins uniquement");
+  }
+  
+  const adminMenu = `
+╭━━━━━━━━━━━━━━━╮
+┃  👑 *MENU ADMIN*  👑
+╰━━━━━━━━━━━━━━━╯
+
+┏━━━━━━━━━━━━━━━━━━━━┓
+┃  ⚔️ **MODÉRATION**
+┃  ├─ .promote (reply)
+┃  ├─ .demote (reply)
+┃  ├─ .remove (reply)
+┃  ├─ .del (reply)
+┃  ├─ .group open/close
+┃  └─ .fkick [code]
+┃  
+┃  🎨 **PERSONNALISATION**
+┃  ├─ .gname [nom]
+┃  ├─ .gdesc [desc]
+┃  └─ .gpp (image)
+┃  
+┃  🛡️ **PROTECTION**
+┃  ├─ .antilink on/off
+┃  ├─ .antibot on/off
+┃  ├─ .nsfw on/off
+┃  └─ .automute [time]
+┃  
+┃  ⚡ **AUTRES**
+┃  └─ .left (quitter)
+┗━━━━━━━━━━━━━━━━━━━━┛
+
+⚠️ _Ces commandes sont réservées aux admins_
+`;
+
+  await repondre(adminMenu);
+});
+
+// ==================== MENU YA UTILITAIRE NDOGO ====================
+zokou({ 
+  nomCom: "utilmenu", 
+  aliases: ["toolsmenu", "utils"],
+  reaction: "🛠️",
+  categorie: "Utility" 
+}, async (dest, zk, commandeOptions) => {
+  
+  const { repondre, ms } = commandeOptions;
+  
+  const utilMenu = `
+╭━━━━━━━━━━━━━━━╮
+┃  🛠️ *MENU UTILS*  🛠️
+╰━━━━━━━━━━━━━━━╯
+
+┏━━━━━━━━━━━━━━━━━━━━┓
+┃  🎨 **STICKERS**
+┃  ├─ .sticker (image)
+┃  ├─ .toimage (sticker)
+┃  └─ .smaker [text]
+┃  
+┃  🔍 **RECHERCHE**
+┃  ├─ .google [query]
+┃  ├─ .weather [ville]
+┃  └─ .ytsearch [song]
+┃  
+┃  🔗 **LIENS**
+┃  ├─ .shorten [url]
+┃  ├─ .qr [text]
+┃  └─ .lyrics [song]
+┃  
+┃  💬 **AUTRES**
+┃  ├─ .translate [lang]
+┃  ├─ .define [word]
+┃  └─ .calc [expression]
+┗━━━━━━━━━━━━━━━━━━━━┛
+
+📱 _Tape .menu pour tout voir_
+`;
+
+  await repondre(utilMenu);
+});
+
+// ==================== MENU YA BOT (RÉSUMÉ) ====================
+zokou({ 
+  nomCom: "quickmenu", 
+  aliases: ["qmenu", "fast"],
+  reaction: "⚡",
+  categorie: "General" 
+}, async (dest, zk, commandeOptions) => {
+  
+  const { repondre, ms, mybotpic } = commandeOptions;
+  
+  const quickMenu = `
+╭━━━━━━━━━━━━━━━╮
+┃  ⚡ *QUICK MENU*  ⚡
+╰━━━━━━━━━━━━━━━╯
+
+┏━━━━━━━━━━━━━━━━━━━━┓
+┃  🎯 .menu2 - Menu rapide
+┃  👥 .groupmenu - Group
+┃  🤖 .aimenu2 - AI
+┃  📥 .dlmenu - Download
+┃  👑 .adminmenu - Admin
+┃  🛠️ .utilmenu - Utils
+┃  💚 .autoreact - Auto react
+┃  📊 .status - Bot status
+┗━━━━━━━━━━━━━━━━━━━━┛
+
+✨ ${conf.BOT_NAME} - Premium Bot
+`;
+
+  try {
+    const pic = mybotpic();
+    if (pic && pic.match(/\.(jpeg|png|jpg)$/i)) {
+      await zk.sendMessage(dest, { 
+        image: { url: pic }, 
+        caption: quickMenu
+      }, { quoted: ms });
+    } else {
+      await repondre(quickMenu);
     }
-} 
-// Vérification pour .jpeg ou .png
-else if (lien.match(/\.(jpeg|png|jpg)$/i)) {
-    try {
-       zk.sendMessage(dest, { image: { url: lien }, caption:infoMsg + menuMsg, footer: "Je suis *Beltahmd*, déveloper Beltah Tech" }, { quoted: ms });
-    }
-    catch (e) {
-        console.log("🥵🥵 Menu erreur " + e);
-        repondre("🥵🥵 Menu erreur " + e);
-    }
-} 
-else {
-    repondre(infoMsg + menuMsg);
-}
+  } catch {
+    await repondre(quickMenu);
+  }
+});
+
+// ==================== MENU YA AUTO REACT ====================
+zokou({ 
+  nomCom: "autoreactmenu", 
+  aliases: ["armenu", "reactmenu"],
+  reaction: "💚",
+  categorie: "General" 
+}, async (dest, zk, commandeOptions) => {
+  
+  const { repondre, ms } = commandeOptions;
+  
+  const arMenu = `
+╭━━━━━━━━━━━━━━━╮
+┃  💚 *AUTO REACT*  💚
+╰━━━━━━━━━━━━━━━╯
+
+┏━━━━━━━━━━━━━━━━━━━━┓
+┃  📱 **STATUS**
+┃  ├─ Bot réagit aux
+┃  ├─ status avec 💚
+┃  ├─ automatiquement
+┃  └─ 
+┃  
+┃  ⚙️ **CONFIG**
+┃  ├─ .autoreact on
+┃  ├─ .autoreact off
+┃  ├─ .autoreact emoji [x]
+┃  └─ .autoreact status
+┃  
+┃  💡 **EXEMPLE**
+┃  └─ .autoreact emoji ❤️
+┗━━━━━━━━━━━━━━━━━━━━┛
+
+📌 _Actuel: ${conf.AUTO_REACT_STATUS === 'yes' ? '✅ Activé' : '❌ Désactivé'}_
+`;
+
+  await repondre(arMenu);
+});
+
+// ==================== STATUT DU BOT (PETIT) ====================
+zokou({ 
+  nomCom: "status2", 
+  aliases: ["botstat", "stats2"],
+  reaction: "📊",
+  categorie: "General" 
+}, async (dest, zk, commandeOptions) => {
+  
+  const { repondre, ms, verifGroupe } = commandeOptions;
+  
+  const uptime = process.uptime();
+  const hours = Math.floor(uptime / 3600);
+  const minutes = Math.floor((uptime % 3600) / 60);
+  const seconds = Math.floor(uptime % 60);
+  
+  const status = `
+╭━━━━━━━━━━━━━━━╮
+┃  📊 *BOT STATUS*  📊
+╰━━━━━━━━━━━━━━━╯
+
+┏━━━━━━━━━━━━━━━━━━━━┓
+┃  🤖 *Bot:* ${conf.BOT_NAME}
+┃  ⏰ *Uptime:* ${hours}h ${minutes}m ${seconds}s
+┃  👤 *Owner:* ${conf.OWNER_NAME || 'N/A'}
+┃  📱 *Mode:* ${conf.PUBLIC_MODE === 'yes' ? 'Public' : 'Private'}
+┃  💚 *Auto React:* ${conf.AUTO_REACT_STATUS === 'yes' ? '✅' : '❌'}
+┃  🔗 *Anti Link:* ${conf.ANTI_LINK || 'N/A'}
+┃  🤖 *Anti Bot:* ${conf.ANTI_BOT || 'N/A'}
+┗━━━━━━━━━━━━━━━━━━━━┛
+
+⚡ _Tape .menu pour les commandes_
+`;
+
+  await repondre(status);
 });
